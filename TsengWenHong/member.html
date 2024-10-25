@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+
+    <div id="navbar-placeholder"></div>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 JS (包含 Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            /* 垂直排列 */
+            max-width: 400px;
+            /* 設定最大寬度 */
+            margin: 0 auto;
+            /* 置中 */
+        }
+
+        .error-message {
+            color: red;
+            /* 錯誤提示文字顏色 */
+            display: none;
+            /* 初始隱藏 */
+        }
+    </style>
+    <script>
+        fetch('header.html')
+            .then(function a(response) {
+                return response.text();
+            })
+            .then(function b(data) {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
+                document.querySelector('.navbar-toggler').addEventListener('click', () => {
+                    const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
+                    if (isExpanded === 'true') {
+                        document.getElementById('shoppingCart').innerHTML = '購物車';
+                    } else {
+                        document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
+                    }
+                });
+            });
+
+    </script>
+
+</head>
+
+<body>
+    <div class="form-container">
+
+        <label for="account">帳號:</label>
+        <input type="text" id="account">
+        <br>
+        <span id="account_error"></span>
+        <br>
+        <label for="password">密碼:</label>
+        <input type="password" id="password" >
+        <br>
+        <span id="password_error"></span>
+        <br>
+        <label for="e-mail">電子信箱:</label>
+        <input type="text" id="e-mail">
+        <br>
+        <span id="e-mail_error"></span>
+        <br>
+        <button>確定</button>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        const accountInput = document.getElementById('account');
+        const accountError = document.getElementById('account_error');
+
+        // 監聽帳號輸入框的 blur 事件
+        accountInput.addEventListener('blur', function () {
+            const accountValue = accountInput.value;
+
+            // 使用正則表達式檢查帳號格式
+            const accountRegex = /^[a-zA-Z0-9]{3,15}$/; // 3到15位字母或數字
+
+            if (!accountRegex.test(accountValue)) {
+                document.getElementById('account_error').innerHTML = '帳號格式不正確，應該是3到15位字母或數字。';
+                // accountError.textContent = '帳號格式不正確，應該是3到15位字母或數字。';
+                // accountError.style.display = 'block'; // 顯示錯誤信息
+            } else {
+                document.getElementById('account_error').innerHTML = ''; // 清除錯誤信息
+                // accountError.style.display = 'none'; // 隱藏錯誤信息
+            }
+
+        });
+
+        var password_input = document.getElementById('password');
+
+        password_input.addEventListener('blur', function checkpassword() {
+            var passwordModel = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.{8,})/;
+
+            if (!passwordModel.test(password_input.value)) {
+                document.getElementById('password_error').innerHTML = '至少為8位數，並且要包含各1個大小寫字母和一個特殊字元';
+            }
+            else {
+                document.getElementById('password_error').innerHTML = '';
+            }
+        })
+
+        // 註冊按鈕事件處理
+        document.getElementById('registerBtn').addEventListener('click', function () {
+            // 這裡可以加入註冊的邏輯
+            alert('註冊成功！');
+        });
+
+    </script>
+</body>
+
+</html>
