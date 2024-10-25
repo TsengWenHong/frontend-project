@@ -31,8 +31,7 @@
         .error-message {
             color: red;
             /* 錯誤提示文字顏色 */
-            display: none;
-            /* 初始隱藏 */
+            
         }
     </style>
     <script>
@@ -63,17 +62,17 @@
         <label for="account">帳號:</label>
         <input type="text" id="account">
         <br>
-        <span id="account_error"></span>
+        <span id="account_error" class="error-message"></span>
         <br>
         <label for="password">密碼:</label>
         <input type="password" id="password">
         <br>
-        <span id="password_error"></span>
+        <span id="password_error" class="error-message"></span>
         <br>
         <label for="password_doublecheck">確認密碼:</label>
         <input type="password" id="password_doublecheck">
         <br>
-        <span id="password_doublecheck_error"></span>
+        <span id="password_doublecheck_error" class="error-message"></span>
         <br>
         <button id="registerBtn">註冊</button>
     </div>
@@ -97,6 +96,7 @@
             const accountRegex = /^[a-zA-Z0-9]{3,15}$/; // 3到15位字母或數字
 
             if (!accountRegex.test(accountValue)) {
+
                 document.getElementById('account_error').innerHTML = '帳號格式不正確，應該是3到15位字母或數字。';
                 // accountError.textContent = '帳號格式不正確，應該是3到15位字母或數字。';
                 // accountError.style.display = 'block'; // 顯示錯誤信息
@@ -108,6 +108,7 @@
         });
         // 密碼註冊欄位
         var password_input = document.getElementById('password');
+
 
         password_input.addEventListener('blur', function checkpassword() {
             var passwordModel = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.{8,})/;
@@ -141,13 +142,39 @@
             const isPasswordMatch = password_input.value === password_doublecheck_input.value && password_doublecheck_input.value !== "";
 
             if (isAccountValid && isPasswordValid && isPasswordMatch) {
-                alert('註冊成功！');
+                // 獲取現有用戶
+                const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+                // 檢查帳號是否已經存在
+                const accountExists = existingUsers.some(user => user.account === accountInput.value);
+
+                if (accountExists) {
+                    alert('帳號已存在，請選擇其他帳號。');
+                } else {
+                    // 構造一個用戶物件
+                    const newUser = {
+                        account: accountInput.value,
+                        password: password_input.value
+                    };
+
+                    // 將新用戶添加到用戶陣列
+                    existingUsers.push(newUser);
+
+                    // 將用戶陣列轉為JSON字串並儲存到localStorage
+                    localStorage.setItem('users', JSON.stringify(existingUsers));
+
+                    alert('註冊成功！');
+                    window.location.href = 'login.html';
+                }
             } else {
                 alert('註冊失敗，請檢查輸入內容！');
             }
+            
         });
-
+        console.log(localStorage.getItem('users'));
+        
     </script>
+    
 </body>
 
 </html>

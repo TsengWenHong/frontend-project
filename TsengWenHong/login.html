@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+
+    <div id="navbar-placeholder"></div>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 JS (包含 Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            /* 垂直排列 */
+            max-width: 400px;
+            /* 設定最大寬度 */
+            margin: 0 auto;
+            /* 置中 */
+        }
+
+        .error-message {
+            color: red;
+            /* 錯誤提示文字顏色 */
+           
+        }
+        .sds{
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+    <script>
+        fetch('header.html')
+            .then(function a(response) {
+                return response.text();
+            })
+            .then(function b(data) {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
+                document.querySelector('.navbar-toggler').addEventListener('click', () => {
+                    const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
+                    if (isExpanded === 'true') {
+                        document.getElementById('shoppingCart').innerHTML = '購物車';
+                    } else {
+                        document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
+                    }
+                });
+            });
+
+    </script>
+
+</head>
+
+<body>
+    <div class="form-container" >
+
+        <label for="accountLogin">帳號:</label>
+        <input type="text" id="accountLogin">
+        <br>
+        <span id="accountLoginError" class="error-message"></span>
+        <br>
+        <label for="passwordLogin">密碼:</label>
+        <input type="password" id="passwordLogin">
+
+        <br>
+        <br>
+        <button id="loginBtn">登入</button>
+        <br>
+        <button id="loginBtn" onclick="location.href='regist.html'" >註冊會員</button>
+
+    </div>
+
+
+    <script>
+        const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+        // 帳號登入欄位
+        const accountLoginInput = document.getElementById('accountLogin');
+        const accountLoginError = document.getElementById('accountLoginError');
+
+        // 監聽帳號輸入框的 blur 事件
+        accountLoginInput.addEventListener('blur', function () {
+            // const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+            // 檢查帳號是否已經存在
+            const accountExists = existingUsers.some(user => user.account === accountLoginInput.value);
+
+            if (accountExists !== true) {
+                document.getElementById('accountLoginError').innerHTML = '尚未註冊過的帳號。';
+                // accountError.textContent = '帳號格式不正確，應該是3到15位字母或數字。';
+                // accountError.style.display = 'block'; // 顯示錯誤信息
+            } else {
+                document.getElementById('accountLoginError').innerHTML = ''; // 清除錯誤信息
+                // accountError.style.display = 'none'; // 隱藏錯誤信息
+            }
+            console.log(accountExists);
+        });
+
+        // 密碼登入欄位
+
+
+        // passwordLoginInput.addEventListener('blur', function () {
+        //     const user = existingUsers.find(user => user.account === accountLoginInput.value)
+        //     if (user) {
+        //         if (user.password === passwordLoginInput) {
+        //             alert("登入成功");
+        //         }
+        //     } else {
+        //         document.getElementById('accountLoginError').innerHTML = ''; // 清除錯誤信息
+        //         // accountError.style.display = 'none'; // 隱藏錯誤信息
+        //     }
+
+        // }
+        // );
+
+
+        // 登入按鈕事件處理
+        const passwordLoginInput = document.getElementById('passwordLogin')
+
+        document.getElementById('loginBtn').addEventListener('click', function () {
+
+
+            const user = existingUsers.find(user => user.account === accountLoginInput.value)
+            if (user) {
+                if (user.password === passwordLoginInput.value) {
+                    alert("登入成功");
+                }
+                else {
+                    alert("使用者密碼錯誤");
+                }
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>
