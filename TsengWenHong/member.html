@@ -66,16 +66,16 @@
         <span id="account_error"></span>
         <br>
         <label for="password">密碼:</label>
-        <input type="password" id="password" >
+        <input type="password" id="password">
         <br>
         <span id="password_error"></span>
         <br>
-        <label for="e-mail">電子信箱:</label>
-        <input type="text" id="e-mail">
+        <label for="password_doublecheck">確認密碼:</label>
+        <input type="password" id="password_doublecheck">
         <br>
-        <span id="e-mail_error"></span>
+        <span id="password_doublecheck_error"></span>
         <br>
-        <button>確定</button>
+        <button id="registerBtn">註冊</button>
     </div>
 
 
@@ -85,6 +85,7 @@
 
 
     <script>
+        // 帳號註冊欄位
         const accountInput = document.getElementById('account');
         const accountError = document.getElementById('account_error');
 
@@ -105,7 +106,7 @@
             }
 
         });
-
+        // 密碼註冊欄位
         var password_input = document.getElementById('password');
 
         password_input.addEventListener('blur', function checkpassword() {
@@ -118,11 +119,32 @@
                 document.getElementById('password_error').innerHTML = '';
             }
         })
+        // 密碼再次確認欄位
+
+        var password_doublecheck_input = document.getElementById('password_doublecheck');
+        password_doublecheck_input.addEventListener('blur', function doublecheckpassword() {
+
+
+            if (password_doublecheck_input.value !== (password_input.value) || password_doublecheck_input.value === "") {
+                document.getElementById('password_doublecheck_error').innerHTML = '和原輸入密碼不符';
+            }
+            else {
+                document.getElementById('password_doublecheck_error').innerHTML = '';
+            }
+        })
+
 
         // 註冊按鈕事件處理
         document.getElementById('registerBtn').addEventListener('click', function () {
-            // 這裡可以加入註冊的邏輯
-            alert('註冊成功！');
+            const isAccountValid = /^[a-zA-Z0-9]{3,15}$/.test(accountInput.value);
+            const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])(?=.{8,})/.test(password_input.value);
+            const isPasswordMatch = password_input.value === password_doublecheck_input.value && password_doublecheck_input.value !== "";
+
+            if (isAccountValid && isPasswordValid && isPasswordMatch) {
+                alert('註冊成功！');
+            } else {
+                alert('註冊失敗，請檢查輸入內容！');
+            }
         });
 
     </script>
