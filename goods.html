@@ -48,6 +48,22 @@
         #picture6:hover {
             content: url('./2.jpg'); /* 新圖片的 URL */
         }
+
+        @media (max-width: 600px) {
+            .item {
+                margin: 5px; /* 手機版的間距更小 */
+            }
+
+            .item img {
+                max-width: 100%; /* 在手機上圖片寬度100% */
+            }
+
+            /* 調整為一列顯示 */
+            .col-2 {
+                flex: 0 0 100%; /* 在手機上每行只顯示一個項目 */
+                max-width: 100%;
+            }
+        }
     </style>
     <script>
         fetch('header.html')
