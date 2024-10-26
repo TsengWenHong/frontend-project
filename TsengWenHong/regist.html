@@ -31,25 +31,14 @@
         .error-message {
             color: red;
             /* 錯誤提示文字顏色 */
-            
+
         }
     </style>
     <script>
         fetch('header.html')
-            .then(function a(response) {
-                return response.text();
-            })
-            .then(function b(data) {
+            .then(response => response.text())
+            .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
-                // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
-                document.querySelector('.navbar-toggler').addEventListener('click', () => {
-                    const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
-                    if (isExpanded === 'true') {
-                        document.getElementById('shoppingCart').innerHTML = '購物車';
-                    } else {
-                        document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
-                    }
-                });
             });
 
     </script>
@@ -169,12 +158,12 @@
             } else {
                 alert('註冊失敗，請檢查輸入內容！');
             }
-            
+
         });
         console.log(localStorage.getItem('users'));
-        
+
     </script>
-    
+
 </body>
 
 </html>

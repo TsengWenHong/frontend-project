@@ -26,21 +26,26 @@
     <div id="navbar-placeholder"></div>
     <script>
         fetch('header.html')
-            .then(function a(response) {
-                return response.text();
-            })
-            .then(function b(data) {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-                // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
-                document.querySelector('.navbar-toggler').addEventListener('click', () => {
-                    const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
-                    if (isExpanded === 'true') {
-                        document.getElementById('shoppingCart').innerHTML = '購物車';
-                    } else {
-                        document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
-                    }
-                });
-            });
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+        // fetch('header.html')
+            // .then(function a(response) {
+            //     return response.text();
+            // })
+            // .then(function b(data) {
+            //     document.getElementById('navbar-placeholder').innerHTML = data;
+            //     // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
+            //     document.querySelector('.navbar-toggler').addEventListener('click', () => {
+            //         const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
+            //         if (isExpanded === 'true') {
+            //             document.getElementById('shoppingCart').innerHTML = '購物車';
+            //         } else {
+            //             document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
+            //         }
+            //     });
+            // });
 
 
     </script>
@@ -70,6 +75,37 @@
     </main>
     <script>
 
+        // fetch('header.html')
+        //     .then(response => response.text())
+        //     .then(data => {
+        //         document.getElementById('navbar-placeholder').innerHTML = data;
+
+        //         // 綁定點擊漢堡按鈕的事件
+        //         document.querySelector('.navbar-toggler').addEventListener('click', updateShoppingCartIcon);
+
+        //         // 在視窗大小改變時，檢查購物車狀態
+        //         window.addEventListener('resize', updateShoppingCartIcon);
+
+        //         // 初始化購物車圖示狀態
+        //         updateShoppingCartIcon();
+        //     });
+        // // 檢查漢堡按鈕的展開狀態，並更新購物車圖示
+        // function updateShoppingCartIcon() {
+        //     const hamburgerButton = document.getElementById('Hamburger');
+        //     const shoppingCart = document.getElementById('shoppingCart');
+
+        //     if (!hamburgerButton || !shoppingCart) return; // 若元素不存在則跳出
+
+        //     const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+        //     const isMobileView = window.innerWidth < 992; // 判斷是否為小螢幕
+
+        //     if (isMobileView && !isExpanded) {
+        //         shoppingCart.innerHTML = '購物車';
+        //     } else {
+        //         shoppingCart.innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
+                
+        //     }
+        // }
 
 
 

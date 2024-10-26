@@ -19,62 +19,98 @@
             /* 文字置中 */
             margin: 55px;
             /* 圖片間距 */
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
+
         .item img {
-            width: 200px; /* 圖片寬度 */
-            height: auto; /* 高度自動 */
+            width: 200px;
+            /* 圖片寬度 */
+            height: auto;
+            /* 高度自動 */
+        }
+        #picture1:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
+            transform: scale(1.1); /* 懸停時放大 */
+            
+        }
+        #picture2:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
+        }
+        #picture3:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
+        }
+        #picture4:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
+        }
+        #picture5:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
+        }
+        #picture6:hover {
+            content: url('./2.jpg'); /* 新圖片的 URL */
         }
     </style>
     <script>
         fetch('header.html')
-            .then(function a(response) {
-                return response.text();
-            })
-            .then(function b(data) {
+            .then(response => response.text())
+            .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
-                // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
-                document.querySelector('.navbar-toggler').addEventListener('click', () => {
-                    const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
-                    if (isExpanded === 'true') {
-                        document.getElementById('shoppingCart').innerHTML = '購物車';
-                    } else {
-                        document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
-                    }
-                });
             });
 
     </script>
 </head>
 
-<body >
+<body>
 
 
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 item ">
-                <img src="clothes.jfif" alt="Clothes" >
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture1" >
+                </a>
                 <p>1</p>
+
             </div>
-            <div class="col-2 item">
-                <img src="clothes.jfif" alt="Clothes">
-                <p>2</p>
+            <div class="col-2 item ">
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture2" >
+                </a>
+                <p>1</p>
+
             </div>
-            <div class="col-2 item">
-                <img src="clothes.jfif" alt="Clothes">
-                <p>3</p>
+            <div class="col-2 item ">
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture3" >
+                </a>
+                <p>1</p>
+
             </div>
-            <div class="col-2 item">
-                <img src="clothes.jfif" alt="Clothes">
-                <p>4</p>
+            <div class="col-2 item ">
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture4" >
+                </a>
+                <p>1</p>
+
             </div>
-            <div class="col-2 item">
-                <img src="clothes.jfif" alt="Clothes">
-                <p>5</p>
+            <div class="col-2 item ">
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture5" >
+                </a>
+                <p>1</p>
+
             </div>
+            <div class="col-2 item ">
+                <a href="./goodsdetail.html">
+                    <img src="./8.jpg" alt="Clothes" id="picture6" >
+                </a>
+                <p>1</p>
+
+            </div>
+            
         </div>
     </div>
-    
+
     <script>
 
 
