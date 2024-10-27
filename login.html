@@ -94,23 +94,7 @@
             console.log(accountExists);
         });
 
-        // 密碼登入欄位
-
-
-        // passwordLoginInput.addEventListener('blur', function () {
-        //     const user = existingUsers.find(user => user.account === accountLoginInput.value)
-        //     if (user) {
-        //         if (user.password === passwordLoginInput) {
-        //             alert("登入成功");
-        //         }
-        //     } else {
-        //         document.getElementById('accountLoginError').innerHTML = ''; // 清除錯誤信息
-        //         // accountError.style.display = 'none'; // 隱藏錯誤信息
-        //     }
-
-        // }
-        // );
-
+        
 
         // 登入按鈕事件處理
         const passwordLoginInput = document.getElementById('passwordLogin')
@@ -122,6 +106,7 @@
             if (user) {
                 if (user.password === passwordLoginInput.value) {
                     alert("登入成功");
+                    window.location.href='./goods.html';
                 }
                 else {
                     alert("使用者密碼錯誤");
