@@ -71,7 +71,7 @@
 
 
 
-
+    <script src="cart.js"></script>
     <script>
         // 帳號註冊欄位
         const accountInput = document.getElementById('account');
@@ -161,6 +161,9 @@
 
         });
         console.log(localStorage.getItem('users'));
+        document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
 
     </script>
 

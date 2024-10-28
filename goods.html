@@ -28,39 +28,55 @@
             height: auto;
             /* 高度自動 */
         }
+
         #picture1:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
-            transform: scale(1.1); /* 懸停時放大 */
-            
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
+            transform: scale(1.1);
+            /* 懸停時放大 */
+
         }
+
         #picture2:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
         }
+
         #picture3:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
         }
+
         #picture4:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
         }
+
         #picture5:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
         }
+
         #picture6:hover {
-            content: url('./2.jpg'); /* 新圖片的 URL */
+            content: url('./2.jpg');
+            /* 新圖片的 URL */
         }
 
         @media (max-width: 600px) {
             .item {
-                margin: 5px; /* 手機版的間距更小 */
+                margin: 5px;
+                /* 手機版的間距更小 */
             }
 
             .item img {
-                max-width: 100%; /* 在手機上圖片寬度100% */
+                max-width: 100%;
+                /* 在手機上圖片寬度100% */
             }
 
             /* 調整為一列顯示 */
             .col-2 {
-                flex: 0 0 100%; /* 在手機上每行只顯示一個項目 */
+                flex: 0 0 100%;
+                /* 在手機上每行只顯示一個項目 */
                 max-width: 100%;
             }
         }
@@ -83,53 +99,54 @@
         <div class="row">
             <div class="col-2 item ">
                 <a href="goodsdetail.html?id=1">
-                    <img src="./8.jpg" alt="Clothes" id="picture1" >
+                    <img src="./8.jpg" alt="Clothes" id="picture1">
                 </a>
                 <p>1</p>
 
             </div>
             <div class="col-2 item ">
                 <a href="goodsdetail.html?id=2">
-                    <img src="./8.jpg" alt="Clothes" id="picture2" >
+                    <img src="./8.jpg" alt="Clothes" id="picture2">
                 </a>
                 <p>1</p>
 
             </div>
             <div class="col-2 item ">
                 <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture3" >
+                    <img src="./8.jpg" alt="Clothes" id="picture3">
                 </a>
                 <p>1</p>
 
             </div>
             <div class="col-2 item ">
                 <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture4" >
+                    <img src="./8.jpg" alt="Clothes" id="picture4">
                 </a>
                 <p>1</p>
 
             </div>
             <div class="col-2 item ">
                 <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture5" >
+                    <img src="./8.jpg" alt="Clothes" id="picture5">
                 </a>
                 <p>1</p>
 
             </div>
             <div class="col-2 item ">
                 <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture6" >
+                    <img src="./8.jpg" alt="Clothes" id="picture6">
                 </a>
                 <p>1</p>
 
             </div>
-            
+
         </div>
     </div>
-
+    <script src="cart.js"></script>
     <script>
-
-
+       document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
 
     </script>
 

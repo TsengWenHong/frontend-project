@@ -3,13 +3,25 @@ let cart = [];
 // function addToCart(item) {
 //     cart.push(item);
 //     displayCart();
+//     localStorage.setItem('cart', JSON.stringify(cart));
 // }
 
 function addToCart(item) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart)); // 保存到 localStorage
-}
+    const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size ===item.size);
+  
+    if (existingItem) {
+      existingItem.quantity=parseInt(existingItem.quantity)+ parseInt(item.quantity) ; // 更新數量
+      existingItem.price = parseInt(item.price) * existingItem.quantity;
+    } else {
+        item.price = parseFloat(item.price) * item.quantity;
+      cart.push(item); // 新增商品
+    }
+  
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount(); // 更新購物車筆數
+  }
+
 
 function displayCart() {
     // 更新購物車顯示邏輯
@@ -47,4 +59,22 @@ function clearCart() {
 }
 
 
-    
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + parseInt(item.quantity, 10), 0);
+
+    const cartCountElement = document.getElementById('cartCount');
+    if (cartCountElement) {
+        cartCountElement.innerText = totalItems;
+
+        // 如果購物車為空，不顯示數字
+        if (totalItems === 0) {
+            cartCountElement.classList.add('d-none');
+        } else {
+            cartCountElement.classList.remove('d-none');
+        }
+    }
+}
+
+
+ 

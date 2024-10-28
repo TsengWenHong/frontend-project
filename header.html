@@ -17,9 +17,12 @@
       /* 純黑色 */
       color: white;
       /* 文字顏色設置為白色 */
-      
+
     }
   </style>
+  <script>
+    
+  </script>
 </head>
 
 <body>
@@ -46,8 +49,9 @@
             </ul>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item "></li>
-              <a class="nav-link" href="./login.html" id="shoppingCart">
+              <a class="nav-link" href="./login.html" id="">
                 <i class="bi bi-person-circle profile-icon" style="font-size: 1.5rem;"></i>
+
               </a>
 
               </li>
@@ -56,6 +60,9 @@
               <li class="nav-item "></li>
               <a class="nav-link" href="./shoppingcarts.html" id="shoppingCart">
                 <i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>
+                <span class="position-absolute   translate-middle badge rounded-pill bg-danger" id="cartCount">
+                  0
+                </span>
               </a>
 
               </li>
@@ -65,9 +72,11 @@
         </div>
       </nav>
     </header>
+    <script src="cart.js"></script>
     <script>
-
-
+     document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
     </script>
 
   </body>

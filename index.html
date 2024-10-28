@@ -74,6 +74,7 @@
 
         </div>
     </main>
+    <script src="cart.js"></script>
     <script>
 
         // fetch('header.html')
@@ -110,7 +111,25 @@
 
 
 
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => parseInt(sum) + parseInt(item.quantity), 0);
 
+            const cartCountElement = document.getElementById('cartCount');
+            cartCountElement.innerText = totalItems;
+
+            // 如果購物車為空，不顯示數字
+            if (totalItems === 0) {
+                cartCountElement.classList.add('d-none');
+            } else {
+                cartCountElement.classList.remove('d-none');
+            }
+
+            
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
     </script>
 
 </body>

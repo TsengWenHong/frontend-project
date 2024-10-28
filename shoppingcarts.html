@@ -47,7 +47,7 @@
         <button class="btn btn-primary">結帳</button>
         <button class="btn btn-primary" id="clearCart">清空購物車</button>
     </div>
-
+    <script src="cart.js"></script>
     <script>
         function displayCart() {
             const cartDiv = document.getElementById('cart');
@@ -95,6 +95,9 @@
 
         // 初始顯示購物車
         displayCart();
+        document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
     </script>
 
     <!-- <div class="container-fluid ">

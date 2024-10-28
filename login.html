@@ -69,7 +69,7 @@
 
     </div>
 
-
+    <script src="cart.js"></script>
     <script>
         const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
         // 帳號登入欄位
@@ -114,7 +114,9 @@
             }
 
         });
-
+        document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount(); // 每次頁面載入都更新購物車計數器
+});
     </script>
 </body>
 
