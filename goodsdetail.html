@@ -153,7 +153,8 @@
             
             const selectedQuantity = document.getElementById('categorySelect').value; // 獲取選擇的數量
             const itemName = document.getElementById('productName').innerText = product.name; // 商品名稱
-            const itemPrice = product.price
+            const itemUnitPrice = product.price;
+            const itemPrice = itemUnitPrice * selectedQuantity;
             // document.getElementById('productPrice').innerHTML = `價格: $${product.price}`; // 商品價格，這裡可以根據實際情況改變
             const itemImage = document.getElementById('productImage').src = product.image; // 商品圖片路徑
             const itemColor = document.querySelector('input[name="color"]:checked')?.value || '無顏色';
@@ -163,6 +164,7 @@
             addToCart({
                 name: itemName,
                 quantity: parseInt( selectedQuantity),
+                unitPrice : itemUnitPrice,
                 price: itemPrice , // 根據選擇的數量計算價格
                 image: itemImage,
                 color: itemColor,

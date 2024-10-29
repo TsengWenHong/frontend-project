@@ -52,9 +52,9 @@ function addToCart(item) {
   
     if (existingItem) {
       existingItem.quantity=parseInt(existingItem.quantity)+ parseInt(item.quantity) ; // 更新數量
-      existingItem.price = parseInt(item.price) * existingItem.quantity;
+      existingItem.price = parseInt(item.unitPrice) * existingItem.quantity;
     } else {
-        item.price = parseFloat(item.price) * item.quantity;
+        item.price = parseFloat(item.unitPrice) * item.quantity;
       cart.push(item); // 新增商品
     }
   
