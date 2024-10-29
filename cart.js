@@ -6,21 +6,7 @@ let cart = [];
 //     localStorage.setItem('cart', JSON.stringify(cart));
 // }
 
-function addToCart(item) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size ===item.size);
-  
-    if (existingItem) {
-      existingItem.quantity=parseInt(existingItem.quantity)+ parseInt(item.quantity) ; // 更新數量
-      existingItem.price = parseInt(item.price) * existingItem.quantity;
-    } else {
-        item.price = parseFloat(item.price) * item.quantity;
-      cart.push(item); // 新增商品
-    }
-  
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount(); // 更新購物車筆數
-  }
+
 
 
 function displayCart() {
@@ -38,12 +24,12 @@ function displayCart() {
         });
         updateTotal();
     }
-}
+};
 
 function removeFromCart(index) {
     cart.splice(index, 1);
     displayCart();
-}
+};
 
 function updateTotal() {
     const total = cart.reduce((sum, item) => sum + item.price, 0);
@@ -51,30 +37,30 @@ function updateTotal() {
     if (totalElement) {
         totalElement.innerText = `總金額: $${total}`;
     }
-}
+};
 
 function clearCart() {
     cart = [];
     displayCart();
-}
+};
 
 
-function updateCartCount() {
+
+function addToCart(item) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + parseInt(item.quantity, 10), 0);
-
-    const cartCountElement = document.getElementById('cartCount');
-    if (cartCountElement) {
-        cartCountElement.innerText = totalItems;
-
-        // 如果購物車為空，不顯示數字
-        if (totalItems === 0) {
-            cartCountElement.classList.add('d-none');
-        } else {
-            cartCountElement.classList.remove('d-none');
-        }
+    const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size ===item.size);
+  
+    if (existingItem) {
+      existingItem.quantity=parseInt(existingItem.quantity)+ parseInt(item.quantity) ; // 更新數量
+      existingItem.price = parseInt(item.price) * existingItem.quantity;
+    } else {
+        item.price = parseFloat(item.price) * item.quantity;
+      cart.push(item); // 新增商品
     }
-}
+  
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount(); // 更新購物車筆數
+  };
 
 
  

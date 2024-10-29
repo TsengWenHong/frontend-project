@@ -39,6 +39,7 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
+                updateCartCount();
             });
 
     </script>
@@ -165,6 +166,28 @@
     updateCartCount(); // 每次頁面載入都更新購物車計數器
 });
 
+function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const uniqueItems = new Set();
+
+            cart.forEach(item => {
+                // 使用唯一的 key 組合來確保每個商品都是唯一的
+                const uniqueKey = `${item.name}-${item.color}-${item.size}`;
+                uniqueItems.add(uniqueKey); // 將唯一的 key 加入 Set
+            });
+
+            const totalItems = uniqueItems.size; // 獲取唯一商品的數量
+            const cartCountElement = document.getElementById('cartCount');
+            cartCountElement.innerText = totalItems;
+            // 如果購物車為空，不顯示數字
+            if (totalItems === 0) {
+                cartCountElement.classList.add('d-none');
+            } else {
+                cartCountElement.classList.remove('d-none');
+            }
+
+
+        }
     </script>
 
 </body>
