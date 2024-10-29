@@ -63,4 +63,18 @@ function addToCart(item) {
   };
 
 
- 
+ // function minusQuantity() {
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //     if (parseInt(item.quantity)<=0) {
+        //         parseInt(item.quantity) = 0;
+        //     }else{parseInt(item.quantity) = parseInt(item.quantity) - 1;}
+            
+        //     localStorage.setItem('cart', JSON.stringify(cart)); 
+        //     updateCartCount();
+        // }; 
+        // function plusQuantity() {
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        //     localStorage.setItem('cart', JSON.stringify(cart)); 
+        //     updateCartCount();
+        // };

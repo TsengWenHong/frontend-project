@@ -55,20 +55,21 @@
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             cartDiv.innerHTML = '';
 
-            // cart.forEach((item, index) => {
-            //     const div = document.createElement('div');
-            //     div.className = 'cart-item';
-            //     div.innerHTML = `
-            //         <span><img src="${item.image}" style="width: 50px;"> ${item.name} ${item.color} ${item.size} $${item.price}</span>
-            //         <button onclick="removeFromCart(${index})">刪除</button>
-            //         <hr>`;
-            //     cartDiv.appendChild(div);
-            // });
+
             cart.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
-        <span><img src="${item.image}" style="width: 50px;"> ${item.name} 顏色:${item.color} 尺寸:${item.size}  數量:${item.quantity} $${item.price}</span>
+        <span>
+            <img src="${item.image}" style="width: 50px;"> 
+            ${item.name} 
+            顏色:${item.color} 
+            尺寸:${item.size}  
+            數量:<button onclick="decreaseQuantity(${index})">-</button> 
+                ${item.quantity} 
+                <button onclick="increaseQuantity(${index})">+</button>  
+            $${item.price}
+            </span>
         <button onclick="removeFromCart(${index})">刪除</button>
         <hr>`;
                 cartDiv.appendChild(div);
@@ -81,6 +82,39 @@
             const total = cart.reduce((sum, item) => sum + item.price, 0);
             document.getElementById('total').innerText = `總金額: $${total}`;
         }
+
+        // function displayCart() {
+        //     const cartDiv = document.getElementById('cart');
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //     cartDiv.innerHTML = '';
+
+        //     cart.forEach((item, index) => {
+        //         const div = document.createElement('div');
+        //         div.className = 'cart-item';
+        //         div.innerHTML = `
+        // <span>
+        //     <img src="${item.image}" style="width: 50px;"> 
+        //     ${item.name} 
+        //     顏色:${item.color} 
+        //     尺寸:${item.size}  
+        //     數量:<button onclick="decreaseQuantity(${index})">-</button> 
+        //         ${item.quantity} 
+        //         <button onclick="increaseQuantity(${index})">+</button>  
+        //     $${item.price} <!-- 顯示每個商品的總價 -->
+        //     </span>
+        // <button onclick="removeFromCart(${index})">刪除</button>
+        // <hr>`;
+        //         cartDiv.appendChild(div);
+        //     });
+
+        //     updateTotal(cart);
+        // }
+
+        // function updateTotal(cart) {
+        //     const total = cart.reduce((sum, item) => sum + (item.price), 0);
+        //     document.getElementById('total').innerText = `總金額: $${total}`;
+        // }
+
 
         function removeFromCart(index) {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -98,10 +132,10 @@
         // 初始顯示購物車
         displayCart();
         document.addEventListener('DOMContentLoaded', () => {
-    // updateCartCount(); // 每次頁面載入都更新購物車計數器
-});
+            // updateCartCount(); // 每次頁面載入都更新購物車計數器
+        });
 
-function updateCartCount() {
+        function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const uniqueItems = new Set();
 
@@ -123,7 +157,25 @@ function updateCartCount() {
 
 
         }
+        // function increaseQuantity(index) {
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //     cart[index].quantity += 1; // 增加數量
+        //     localStorage.setItem('cart', JSON.stringify(cart)); // 更新 localStorage
 
+        //     displayCart(); // 刷新畫面
+
+        // }
+
+        // function decreaseQuantity(index) {
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //     if (cart[index].quantity > 1) {
+        //         cart[index].quantity -= 1; // 減少數量
+        //         localStorage.setItem('cart', JSON.stringify(cart)); // 更新 localStorage
+        //         displayCart(); // 刷新畫面
+        //     } else {
+        //         removeFromCart(index); // 若數量為 0，自動移除該商品
+        //     }
+        // }
     </script>
 
     <!-- <div class="container-fluid ">

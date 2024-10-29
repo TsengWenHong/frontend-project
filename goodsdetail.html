@@ -150,10 +150,7 @@
         }
 
         document.getElementById('addToCartBtn').addEventListener('click', () => {
-            // ocument.getElementById('productName').innerText = product.name;
-            //     document.getElementById('productImage').src = product.image;
-            //     document.getElementById('productPrice').innerText = `價格: $${product.price}`;
-            //     document.getElementById('productDescription').innerText = product.description;
+            
             const selectedQuantity = document.getElementById('categorySelect').value; // 獲取選擇的數量
             const itemName = document.getElementById('productName').innerText = product.name; // 商品名稱
             const itemPrice = product.price
@@ -165,8 +162,8 @@
             // 將商品添加到購物車
             addToCart({
                 name: itemName,
-                quantity: selectedQuantity,
-                price: itemPrice * selectedQuantity, // 根據選擇的數量計算價格
+                quantity: parseInt( selectedQuantity),
+                price: itemPrice , // 根據選擇的數量計算價格
                 image: itemImage,
                 color: itemColor,
                 size: itemSize
