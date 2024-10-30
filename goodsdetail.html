@@ -41,20 +41,43 @@
         const productId = urlParams.get('id');
         const products = {
             1: {
-                name: "商品名稱1",
-                price: 200,
-                image: "./2.jpg",
-                description: "這是商品1的詳細介紹。",
+                name: "女裝 兩件式大衣(格紋)",
+                price: 999,
+                image: "./1.jpg",
+                description: `商品材質:64%聚酯纖維28%嫘縈8%聚丙烯腈纖維,襯裡:100%聚酯纖維`,
 
 
             },
             2: {
-                name: "商品名稱2",
-                price: 300,
-                image: "./8.jpg",
-                description: "這是商品2的詳細介紹。"
+                name: "女裝 菱格壓紋外套(格紋)",
+                price: 999,
+                image: "./2.jpg",
+                description: `商品材質:大身:面料68%聚酯纖維回收聚酯纖維31%嫘縈1%彈性纖維,襯裡:100%聚酯纖維回收聚酯纖維,填充物:100%聚酯纖維,羅紋部分:96%聚酯纖維4%彈性纖維`,
             },
-            // 您可以在這裡繼續添加更多商品
+            3: {
+                name: "女裝 背心拼接襯衫",
+                price: 999,
+                image: "./3.jpg",
+                description: `商品材質:內側:53%聚酯纖維(回收聚酯纖維)22%嫘縈19%聚酯纖維6%彈性纖維;外側:大身:53%聚酯纖維(回收聚酯纖維)22%嫘縈19%聚酯纖維6%彈性纖維,襯裡:100%聚酯纖維(回收聚酯纖維)`,
+            },
+            4: {
+                name: "女裝 挖肩開襟外套",
+                price: 999,
+                image: "./4.jpg",
+                description: `商品材質:83%尼龍17%聚丙烯腈纖維`,
+            },
+            5: {
+                name: "女裝 兩件式裙褲組(格紋)",
+                price: 999,
+                image: "./5 .jpg",
+                description: `商品材質:裙子部分:69%聚酯纖維(回收聚酯纖維)30%嫘縈1%彈性纖維,褲子部分:69%聚酯纖維(回收聚酯纖維)30%嫘縈1%彈性纖維`,
+            },
+            6: {
+                name: "女裝 牛仔褲",
+                price: 999,
+                image: "./6.jpg",
+                description: `商品材質92%棉7%聚酯纖維1%彈性纖維`,
+            }
         };
 
         // 獲取對應的商品資料
@@ -150,7 +173,7 @@
         }
 
         document.getElementById('addToCartBtn').addEventListener('click', () => {
-            
+
             const selectedQuantity = document.getElementById('categorySelect').value; // 獲取選擇的數量
             const itemName = document.getElementById('productName').innerText = product.name; // 商品名稱
             const itemUnitPrice = product.price;
@@ -163,9 +186,9 @@
             // 將商品添加到購物車
             addToCart({
                 name: itemName,
-                quantity: parseInt( selectedQuantity),
-                unitPrice : itemUnitPrice,
-                price: itemPrice , // 根據選擇的數量計算價格
+                quantity: parseInt(selectedQuantity),
+                unitPrice: itemUnitPrice,
+                price: itemPrice, // 根據選擇的數量計算價格
                 image: itemImage,
                 color: itemColor,
                 size: itemSize

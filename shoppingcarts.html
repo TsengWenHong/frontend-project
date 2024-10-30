@@ -61,16 +61,16 @@
                 div.className = 'cart-item';
                 div.innerHTML = `
         <span>
-            <img src="${item.image}" style="width: 50px;"> 
-            ${item.name} 
-            顏色:${item.color} 
-            尺寸:${item.size}  
-            數量:<button onclick="decreaseQuantity(${index})">-</button> 
+            <img src="${item.image}" style="width: 10vw;">&nbsp&nbsp&nbsp 
+            ${item.name} &nbsp&nbsp&nbsp
+            顏色:${item.color} &nbsp&nbsp&nbsp
+            尺寸:${item.size}  &nbsp&nbsp&nbsp
+            數量:&nbsp&nbsp&nbsp<button onclick="decreaseQuantity(${index})">-</button> 
                 ${item.quantity} 
-                <button onclick="increaseQuantity(${index})">+</button>  
-            $${item.unitPrice * item.quantity}
+                <button onclick="increaseQuantity(${index})">+</button>&nbsp&nbsp&nbsp  
+            $${item.unitPrice * item.quantity}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             </span>
-        <button onclick="removeFromCart(${index})">刪除</button>
+        <button  onclick="removeFromCart(${index})" >刪除</button>
         <hr>`;
                 cartDiv.appendChild(div);
             });

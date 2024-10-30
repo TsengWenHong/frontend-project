@@ -4,136 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-
+    <title>T.W.H</title>
+    <link rel="icon" href="./logo.webp">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap 5 JS (包含 Popper.js) -->
+
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <div id="navbar-placeholder"></div>
+
     <style>
-        .carousel,
+        
+
+        /* .carousel,
         .carousel-inner,
         .carousel-item,
         .carousel-item img {
-            width: 100%;
+            width: 100vw;
             height: 100vh;
-            /* 設定高度為視窗高度 */
+        } */
+
+        .carousel-indicators button {
+            background-color: #fff;
         }
     </style>
 
-    
     <script>
         fetch('header.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-        updateCartCount();
-    });
-        // fetch('header.html')
-            // .then(function a(response) {
-            //     return response.text();
-            // })
-            // .then(function b(data) {
-            //     document.getElementById('navbar-placeholder').innerHTML = data;
-            //     // 當縮放出現漢堡時，監聽點擊程序修改購物車是文字或圖案
-            //     document.querySelector('.navbar-toggler').addEventListener('click', () => {
-            //         const isExpanded = document.getElementById("Hamburger").getAttribute('aria-expanded');
-            //         if (isExpanded === 'true') {
-            //             document.getElementById('shoppingCart').innerHTML = '購物車';
-            //         } else {
-            //             document.getElementById('shoppingCart').innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
-            //         }
-            //     });
-            // });
-
-
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                updateCartCount();
+            });
     </script>
 </head>
 
-<body class=" text-white " style="padding-top: 56px;">
+<body class="text-white " style=" background-color: black; padding-top: 70px;">
+    <!-- 第一張首圖 -->
+    <div  >
+        <img src="./indexImagery.jpeg" style=" object-position: center; object-fit: cover; width: 100vw;
+            height: 100vh;"  >
+    </div>
+<br>
+<br>
+<br>
+    <div class="row container-fluid " >
+        <div class="col-12 col-md-6 " style="position: relative ; height: 100vh; padding-left: 50px;">
+            <img src="./kaboompics_morning-essentials-coffee-accessories-and-sunglasses-36853.jpg" style=" object-position: center; object-fit: cover; width: 100%;
+            height: 100%;" >
+        </div>
+        <div id="carouselExample" class="carousel slide col-12 col-md-6 " data-bs-ride="carousel"
+            data-bs-interval="2000" >
 
-    <!-- 導覽列 -->
-
-
-    <main>
-        <div class="carousel slide " data-bs-ride="carousel" data-bs-interval="2000"
-            style="position: fixed; right: 0 ;width: 75%; height: 100%" ;>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="img-fluid  w-100" src="https://dummyimage.com/1200x700/00ff5e/ffffff">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid  w-100" src="https://dummyimage.com/1200x700/ff8400/ffffff">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-fluid  w-100" src="https://dummyimage.com/1200x700/f057c5/ffffff">
-                </div>
+            <!-- Indicators (數量條) -->
+            <div class="carousel-indicators " style="padding-bottom: 100px;" >
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
             </div>
 
+            <!-- Carousel items -->
+            <div class="carousel-inner" style="position: relative ; height: 100vh; ">
+                <div class="carousel-item active">
+                    <a href="./goods.html">
+                        <img src="./shoes.jpg"  style=" object-position: center; object-fit: cover;object-position: center; object-fit: cover; width: 100%;
+            height: 100%; "  >
+                        <!-- <img src="https://dummyimage.com/1200x700/00ff5e/ffffff" > -->
+                        </a>
+                    
+                </div>
+                <div class="carousel-item">
+                    <img src="./7 (2).jpg" style=" object-position: center; object-fit: cover; object-position: center; object-fit: cover; width: 100%;
+            height: 100%;" >
+                </div>
+                <div class="carousel-item">
+                    <img src="./6.jpg" style=" object-position: center; object-fit: cover; object-position: center; object-fit: cover; width: 100%;
+            height: 100%;" >
+                </div>
+
+            </div>
+
+            <!-- Left and right controls (左右按鈕) -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="color: black;">
+                <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+                <span class="visually-hidden"  >Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    </main>
-    <script src="cart.js"></script>
-    <script>
+        <br>
+    </div>
+    
+    <div  style="position: relative ; height: 100vh; margin-top: 50px;">
+        <img src="./myedit_ai_image_1029165634.jpg" style=" object-position: center; object-fit: cover; width: 100%;
+        height: 100%;" >
+    </div>
+        <script src="cart.js"></script>
+        <script>
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const uniqueItems = new Set();
 
-        // fetch('header.html')
-        //     .then(response => response.text())
-        //     .then(data => {
-        //         document.getElementById('navbar-placeholder').innerHTML = data;
+                cart.forEach(item => {
+                    const uniqueKey = `${item.name}-${item.color}-${item.size}`;
+                    uniqueItems.add(uniqueKey);
+                });
 
-        //         // 綁定點擊漢堡按鈕的事件
-        //         document.querySelector('.navbar-toggler').addEventListener('click', updateShoppingCartIcon);
+                const totalItems = uniqueItems.size;
+                const cartCountElement = document.getElementById('cartCount');
 
-        //         // 在視窗大小改變時，檢查購物車狀態
-        //         window.addEventListener('resize', updateShoppingCartIcon);
-
-        //         // 初始化購物車圖示狀態
-        //         updateShoppingCartIcon();
-        //     });
-        // // 檢查漢堡按鈕的展開狀態，並更新購物車圖示
-        // function updateShoppingCartIcon() {
-        //     const hamburgerButton = document.getElementById('Hamburger');
-        //     const shoppingCart = document.getElementById('shoppingCart');
-
-        //     if (!hamburgerButton || !shoppingCart) return; // 若元素不存在則跳出
-
-        //     const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
-        //     const isMobileView = window.innerWidth < 992; // 判斷是否為小螢幕
-
-        //     if (isMobileView && !isExpanded) {
-        //         shoppingCart.innerHTML = '購物車';
-        //     } else {
-        //         shoppingCart.innerHTML = `<i class="bi bi-cart-fill" style="font-size: 1.5rem;"></i>`;
-                
-        //     }
-        // }
-
-        function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const uniqueItems = new Set();
-
-            cart.forEach(item => {
-                // 使用唯一的 key 組合來確保每個商品都是唯一的
-                const uniqueKey = `${item.name}-${item.color}-${item.size}`;
-                uniqueItems.add(uniqueKey); // 將唯一的 key 加入 Set
-            });
-
-            const totalItems = uniqueItems.size; // 獲取唯一商品的數量
-            const cartCountElement = document.getElementById('cartCount');
-            cartCountElement.innerText = totalItems;
-            // 如果購物車為空，不顯示數字
-            if (totalItems === 0) {
-                cartCountElement.classList.add('d-none');
-            } else {
-                cartCountElement.classList.remove('d-none');
+                cartCountElement.innerText = totalItems;
+                cartCountElement.classList.toggle('d-none', totalItems === 0);
             }
-
-
-        }
-
-    </script>
+        </script>
 
 </body>
 

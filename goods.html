@@ -17,20 +17,28 @@
         .item {
             text-align: center;
             /* 文字置中 */
-            margin: 55px;
+            margin: 50px;
             /* 圖片間距 */
+            padding: 70px auto;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            object-position: center;
+
         }
 
         .item img {
-            width: 200px;
+            /* width: 200px; */
             /* 圖片寬度 */
-            height: auto;
+            height: 80vh;
             /* 高度自動 */
+            object-position: center;
+            object-fit: cover;
+            /* padding: 60px; */
+            padding-left: 30px;
+            border-radius: 35%;
         }
 
         #picture1:hover {
-            content: url('./2.jpg');
+            content: url('./1\(2\).jpg');
             /* 新圖片的 URL */
             transform: scale(1.1);
             /* 懸停時放大 */
@@ -38,47 +46,41 @@
         }
 
         #picture2:hover {
-            content: url('./2.jpg');
+            content: url('./2\(1\).jpg');
             /* 新圖片的 URL */
+            transform: scale(1.1);
         }
 
         #picture3:hover {
-            content: url('./2.jpg');
+            content: url('./3\ \(1\).jpg');
             /* 新圖片的 URL */
+            transform: scale(1.1);
         }
 
         #picture4:hover {
-            content: url('./2.jpg');
+            content: url('./4\(1\).jpg');
             /* 新圖片的 URL */
+            transform: scale(1.1);
         }
 
         #picture5:hover {
-            content: url('./2.jpg');
+            content: url('./5\ \(1\).jpg');
             /* 新圖片的 URL */
+            transform: scale(1.1);
         }
 
         #picture6:hover {
-            content: url('./2.jpg');
+            content: url('./6\(1\)jpg.jpg');
             /* 新圖片的 URL */
+            transform: scale(1.1);
         }
 
-        @media (max-width: 600px) {
-            .item {
-                margin: 5px;
-                /* 手機版的間距更小 */
-            }
 
-            .item img {
-                max-width: 100%;
-                /* 在手機上圖片寬度100% */
-            }
-
-            /* 調整為一列顯示 */
-            .col-2 {
-                flex: 0 0 100%;
-                /* 在手機上每行只顯示一個項目 */
-                max-width: 100%;
-            }
+        .text {
+            color: white;
+            text-align: center;
+            padding-top: 45px;
+            padding-left: 110px;
         }
     </style>
     <script>
@@ -92,52 +94,53 @@
     </script>
 </head>
 
-<body style="padding-top: 70px;">
+<body style="padding-top: 70px; background-color: black;">
+    <div class="container-fluid">
+        <p style="color: aliceblue; ; font-size: 100px; text-align: center;">winter</p>
+        <hr style="color: white; border: 2px solid;width: 95vw; margin: 0px auto; ">
 
-
-
+    </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 item ">
+            <div class="col-6 col-md-3 item " style="display: flexbox; justify-content: center;">
                 <a href="goodsdetail.html?id=1">
-                    <img src="./8.jpg" alt="Clothes" id="picture1">
+                    <img src="./1.jpg" alt="Clothes" id="picture1">
                 </a>
-                <p>1</p>
-
+                <p class="text" >&nbsp;女裝 兩件式大衣(格紋) &nbsp;$999</p>
             </div>
-            <div class="col-2 item ">
+            <div class="col-6 col-md-3 item ">
                 <a href="goodsdetail.html?id=2">
-                    <img src="./8.jpg" alt="Clothes" id="picture2">
+                    <img src="./2.jpg" alt="Clothes" id="picture2">
                 </a>
-                <p>1</p>
+                <p class="text">&nbsp;女裝 菱格壓紋外套(格紋) &nbsp;$999</p>
 
             </div>
-            <div class="col-2 item ">
-                <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture3">
+            <div class="col-6 col-md-3 item ">
+                <a href="goodsdetail.html?id=3">
+                    <img src="./3.jpg" alt="Clothes" id="picture3">
                 </a>
-                <p>1</p>
+                <p class="text">&nbsp;女裝 背心拼接襯衫 &nbsp;$999</p>
 
             </div>
-            <div class="col-2 item ">
-                <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture4">
+            <div class="col-6 col-md-3 item ">
+                <a href="goodsdetail.html?id=4">
+                    <img src="./4.jpg" alt="Clothes" id="picture4">
                 </a>
-                <p>1</p>
+                <p class="text">&nbsp;女裝 挖肩開襟外套 &nbsp;$999</p>
 
             </div>
-            <div class="col-2 item ">
-                <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture5">
+            <div class="col-6 col-md-3 item ">
+                <a href="goodsdetail.html?id=5">
+                    <img src="./5 .jpg" alt="Clothes" id="picture5">
                 </a>
-                <p>1</p>
+                <p class="text">&nbsp;女裝 兩件式裙褲組(格紋) &nbsp;$999</p>
 
             </div>
-            <div class="col-2 item ">
-                <a href="./goodsdetail.html">
-                    <img src="./8.jpg" alt="Clothes" id="picture6">
+            <div class="col-6 col-md-3 item ">
+                <a href="goodsdetail.html?id=6">
+                    <img src="./6.jpg" alt="Clothes" id="picture6">
                 </a>
-                <p>1</p>
+                <p class="text">&nbsp;女裝 牛仔褲 &nbsp;$999</p>
 
             </div>
 
@@ -145,7 +148,7 @@
     </div>
     <script src="cart.js"></script>
     <script>
-       function updateCartCount() {
+        function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const uniqueItems = new Set();
 
