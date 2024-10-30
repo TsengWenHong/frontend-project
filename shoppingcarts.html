@@ -143,9 +143,10 @@
         function increaseQuantity(index) {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart[index].quantity += 1; // 增加數量
+            updateTotal(cart);
             localStorage.setItem('cart', JSON.stringify(cart)); // 更新 localStorage
             displayCart(); // 刷新畫面
-            updateTotal();
+            // updateTotal();
 
         }
 
