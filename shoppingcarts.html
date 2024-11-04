@@ -18,12 +18,17 @@
         rel="stylesheet">
     <style>
         .navbar-brand {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Pacifico', cursive;
-      font-size: xx-large;
-    }
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Pacifico', cursive;
+            font-size: xx-large;
+        }
+
+        .cart1 p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
     </style>
     <script>
         fetch('header.html')
@@ -31,25 +36,37 @@
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
                 updateCartCount();
+
             });
+
+
+
 
     </script>
 
 </head>
 
 <body style="padding-top: 110px ; ">
-    <div class="container">
-        <h1 class="mt-4">購物車</h1>
+
+    <div class="container " id="cartContainer">
+        <h1 class="mt-4" style="font-weight: bold;">購物車</h1>
         <hr>
         <div id="cart" class="mt-3"></div>
         <div class="row ">
             <div class="col-12 text-end">
-                <h3 id="total" class="mt-4">總金額: $0</h3>
+                <h1 id="total"  style="font-weight: bold;">總金額: $0</h1>
             </div>
-            <div class="col-12 text-end">
+            <div class="col-12 text-end mt-4">
 
-                <button class="btn btn-primary">結帳</button>
-                <button class="btn btn-primary" id="clearCart">清空購物車</button>
+
+                <button class="btn " style="transform: scale(1.5); margin-right: 50px;background-color: black;
+            color:white ;">結帳</button>
+
+
+
+                <button class="btn " style="transform: scale(1.5); background-color: black;
+            color:white ;" id="clearCart">清空購物車</button>
+
             </div>
         </div>
         <!-- <h3 id="total" class="mt-4">總金額: $0</h3>
@@ -62,30 +79,38 @@
             const cartDiv = document.getElementById('cart');
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             cartDiv.innerHTML = '';
-
+            if (cart.length === 0) {
+                cartContainer.innerHTML = ` 
+            <div class="container-fluid" style="margin-top:110px;">
+                <p style="text-align: center; font-size: 3rem;">目前購物車沒有商品,</p>
+                <a href="./goods.html" class="container-fluid btn" style="color: cadetblue; font-size: 3rem;">在逛一下。</a>
+            </div>`;
+                return; // 提前返回，因為沒有商品
+            }
 
             cart.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'row align-items-center mb-3';
                 div.innerHTML = `
                 
-        <div class="col-3">
+        <div class="col-3 " >
                 <img src="${item.image}" class="img-fluid rounded" alt="${item.name}">
             </div>
-            <div class="col-3">
-                <p><strong>${item.name}</strong></p>
+            <div class="col-3 cart1">
+                <p>${item.name}</p>
                 <p>顏色: ${item.color} | 尺寸: ${item.size}</p>
                 <p>$${item.unitPrice * item.quantity}</p>
             </div>
             
            
                 <div class = "col-3">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index})">-</button>
-                        <span class="mx-2">${item.quantity}</span>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index})">+</button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${index})" style = "font-size:1.5rem;font-weight:bold;">-</button>
+                        <span class="mx-2" style = "font-size:1.5rem;font-weight:bold;">${item.quantity}</span>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${index})" style = "font-size:1.5rem;font-weight:bold;">+</button>
                  </div>
             <div class="col-3  " >
-                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">刪除</button>
+                <button class="btn btn-sm " onclick="removeFromCart(${index})" style="transform: scale(1.5);background-color: black;
+            color:white ; ">刪除</button>
             </div>
             <div class = "">
             <hr>
@@ -119,6 +144,7 @@
         document.getElementById('clearCart').addEventListener('click', () => {
             localStorage.removeItem('cart'); // 清空 localStorage
             displayCart(); // 更新顯示
+            updateCartCount();
         });
 
         // 初始顯示購物車
@@ -167,14 +193,34 @@
                 displayCart(); // 刷新畫面
             } else {
                 removeFromCart(index); // 若數量為 0，自動移除該商品
+
             }
-        }
+        };
+
+
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //     const cartDiv = document.getElementById('cart');
+        //     const cartContainer = document.getElementById('cartContainer');
+        //     if (cart.length === 0) {
+
+
+        //         cartContainer.innerHTML = ` <div class="container-fluid " style = "margin-top:110px;" >
+        //         <p style="text-align: center; font-size: 3rem;">目前購物車沒有商品,</p>
+        //         <a href="./goods.html" class="container-fluid btn  " style="color: cadetblue;font-size: 3rem;">在逛一下。</a>
+        //     </div>`
+
+        //     } else {
+
+        //         displayCart();
+        //     };
+        // });
+
+
+
     </script>
 
-    <!-- <div class="container-fluid ">
-        <p style="text-align: center;">目前購物車沒有商品,</p>
-        <a href="./goods.html" class="container-fluid btn  " style="color: cadetblue;">在逛一下</a>
-    </div> -->
+
 
     <!-- var total = 所有的商品加起來>>>>一項商品的數量X價錢在加上其他商品的數量X價錢 -->
     <!-- 商品a的總價 一個按鈕去累加數量 數量在去乘上價錢 -->
