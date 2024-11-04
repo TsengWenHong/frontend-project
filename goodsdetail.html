@@ -41,6 +41,9 @@
         /* #productSize input[type="radio"]{
             transform: scaleX(1.5);
         } */
+        input[type="radio"]:checked {
+        accent-color: black; /* 這是新的顏色屬性，適用於現代瀏覽器 */
+    }
     </style>
     <script>
         fetch('header.html')
@@ -135,7 +138,7 @@
                 <!-- 顏色選擇 -->
                 <h2 class="mb-3 mt-4"style="font-weight: bold;">顏色</h2>
                 <div class="mb-4" id="colorChoice">
-                    <input type="radio" name="color" id="color1" style="transform: scale(1.5); " value="紅色">
+                    <input type="radio" name="color" id="color1" style="transform: scale(1.5); background-color: black;" value="紅色">
                     <label for="color1" style="font-size: 1.5rem;">紅色</label>
                     <input type="radio" name="color" id="color2" style="transform: scale(1.5); margin-left: 30px;"
                         value="藍色">
